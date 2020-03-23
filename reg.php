@@ -24,7 +24,6 @@
 				(:sn, :fn, :pt, :email, :pass, 1);
 			");
 			
-			
 			$insert_stmt->bindValue(":sn", $sn);
 			$insert_stmt->bindValue(":fn", $fn);
 			$insert_stmt->bindValue(":pt", $pt);
