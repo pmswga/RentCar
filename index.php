@@ -16,12 +16,12 @@
 	<body>
 	
 		<div class="ui pointing menu">
-			<div class="header item">RentCar</div>
+			<a class="header item" href="index.php">RentCar</a>
 			<a class="item" href="">Автомобили</a>
 			<a class="item" href="">Производители</a>
 			<div class="right menu">
 				<a class="item" href="login.php">Войти</a>
-				<a class="item" href="">Регистрация</a>
+				<a class="item" href="reg.php">Регистрация</a>
 			</div>
 		</div>
 	

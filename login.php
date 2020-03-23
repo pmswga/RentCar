@@ -2,6 +2,15 @@
 
 	require_once "start.php";
 	
+	if (!empty($_POST['loginButton'])) {
+		
+		$email = $_POST['email'];
+		$pass = $_POST['pass'];
+		
+		//check user in database
+		
+	}
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,12 +24,12 @@
 	<body>
 	
 		<div class="ui pointing menu">
-			<div class="header item">RentCar</div>
+			<a class="header item" href="index.php">RentCar</a>
 			<a class="item" href="">Автомобили</a>
 			<a class="item" href="">Производители</a>
 			<div class="right menu">
-				<a class="item" href="">Войти</a>
-				<a class="item" href="">Регистрация</a>
+				<a class="item" href="login.php">Войти</a>
+				<a class="item" href="reg.php">Регистрация</a>
 			</div>
 		</div>
 	
@@ -31,17 +40,17 @@
 				<div class="ten wide column">
 					<fieldset class="ui segment blue">
 						<legend><h3>Вход в систему</h3></legend>
-						<form class="ui form">
+						<form class="ui form" method="POST">
 							<div class="field">
 								<label>E-mail</label>
-								<input type="email">
+								<input type="email" name="email" required>
 							</div>
 							<div class="field">
 								<label>Пароль</label>
-								<input type="password">
+								<input type="password" name="pass" required>
 							</div>
 							<div class="field">
-								<input type="submit" value="Войти" class="ui primary button">
+								<input type="submit" name="loginButton" value="Войти" class="ui primary button">
 							</div>
 						</form>
 					</fieldset>
