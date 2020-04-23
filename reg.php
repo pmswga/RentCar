@@ -2,6 +2,11 @@
 
 	require_once "start.php";
 	
+    if (isset($_SESSION['isUserLoggined']) && $_SESSION['isUserLoggined']) {
+        header("Location: index.php");
+        exit();
+    }
+    
 	$msg = "";
 	
 	if (!empty($_POST['regButton'])) {
@@ -16,6 +21,7 @@
 		
 		if ($pass !== $repeat_pass) {
 			$msg = "Пароли не совпадают";
+            $type = "red";
 		} else {
 			
 			$insert_stmt = $pdo->prepare("INSERT INTO `Users` 
@@ -32,8 +38,10 @@
 			
 			if ($insert_stmt->execute()) {
 				$msg = "Регистрация прошла успешно";
+                $type = "green";
 			} else {
 				$msg = "Пользователь с такой почтой уже зарегистрирован";
+                $type = "red";
 			}
 			
 		}
@@ -51,17 +59,7 @@
 		<script type="text/javscript" src="js/jquery.js"></script>
 	</head>
 	<body>
-	
-		<div class="ui pointing menu">
-			<a class="header item" href="index.php">RentCar</a>
-			<a class="item" href="">Автомобили</a>
-			<a class="item" href="">Производители</a>
-			<div class="right menu">
-				<a class="item" href="login.php">Войти</a>
-				<a class="item" href="reg.php">Регистрация</a>
-			</div>
-		</div>
-	
+        <? include "blocks/menu.php" ?>
 		<div class="ui stackable grid">
 			<div class="row">
 				<div class="three wide column">
@@ -71,19 +69,17 @@
 						<legend><h3>Регистрация в системе</h3></legend>
 						<?php
 							if (!empty($msg)) {
-								
-							echo <<<END
-								<div class='ui icon message'>
-									<i class='inbox icon'></i>
-									<div class='content'>
-										<div class='header'>
-											Уведомление
-										</div>
-										<p>{$msg}</p>
-									</div>
-								</div>
+                                echo <<<END
+                                    <div class='ui {$type} icon message'>
+                                        <i class='inbox icon'></i>
+                                        <div class='content'>
+                                            <div class='header'>
+                                                Уведомление
+                                            </div>
+                                            <p>{$msg}</p>
+                                        </div>
+                                    </div>
 END;
-							
 							}
 						?>
 						<form class="ui form" method="POST">
@@ -119,6 +115,5 @@ END;
 				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>

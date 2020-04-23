@@ -2,7 +2,6 @@
 
 	require_once "start.php";
 	
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,17 +13,7 @@
 		<script type="text/javscript" src="js/jquery.js"></script>
 	</head>
 	<body>
-	
-		<div class="ui pointing menu">
-			<a class="header item" href="index.php">RentCar</a>
-			<a class="item" href="">Автомобили</a>
-			<a class="item" href="">Производители</a>
-			<div class="right menu">
-				<a class="item" href="login.php">Войти</a>
-				<a class="item" href="reg.php">Регистрация</a>
-			</div>
-		</div>
-	
+        <? include "blocks/menu.php" ?>
 		<div class="ui grid">
 			<div class="row">
 				<div class="sixteen wide column">
@@ -32,6 +21,5 @@
 				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>
